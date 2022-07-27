@@ -17,13 +17,14 @@ function App() {
           *   由于react-router-dom组件的更新，目前需要Route组件放在Routers下
         */}
         <ul>
-          <li><Link to="/msg/*">消息</Link></li>
+          <li><Link to="/msg/">消息</Link></li>
           <li><Link to="/home/*">首页</Link></li>
           <li><Link to="/my/*">我的</Link></li>
         </ul>
         <Routes>
           <Route path="/msg/*" element={<Msg></Msg>}></Route>
           <Route path="/home/*" element={<Home></Home>}></Route>
+          <Route path="/" element={<Home></Home>}></Route>
           <Route path="/my/*" element={<My></My>}></Route>
         </Routes>
       </div>
