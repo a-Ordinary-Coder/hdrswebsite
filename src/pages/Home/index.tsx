@@ -9,12 +9,13 @@ import {
 import {
     AppOutline,
     MessageOutline,
-    UnorderedListOutline,
     UserOutline,
     MessageFill,
 } from 'antd-mobile-icons'
 
 import styles from './demo02.less'
+import Msg from '../Msg'
+import My from '../My'
 
 const Bottom: FC = () => {
     const navigate = useNavigate()
@@ -32,44 +33,40 @@ const Bottom: FC = () => {
             icon: <AppOutline />,
         },
         {
-            key: '*/home/todo',
-            title: '我的待办',
-            icon: <UnorderedListOutline />,
-            badge: '9',
-        },
-        {
-            key: '*/home/message',
-            title: '我的消息',
+            key: '*/home/msg',
+            title: '消息',
             icon: (active: boolean) =>
                 active ? <MessageFill /> : <MessageOutline />,
             badge: '99+',
         },
         {
-            key: '*/home/me',
-            title: '个人中心',
+            key: '*/home/my',
+            title: '我的',
             icon: <UserOutline />,
         },
     ]
 
-    return (
-        // <TabBar activeKey={pathname} onChange={value => navigate(value)} safeArea={true} defaultActiveKey={'*/home/todo'}>
-        //     {tabs.map(item => (
-        //         <TabBar.Item key={item.key} icon={item.icon} title={item.title} badge={item.badge} />
-        //     ))}
-        // </TabBar>
+    const onNavigate = (value: string) => {
+        navigate(value)
+    }
 
-        <TabBar onChange={value => navigate(value)}>
-            {tabs.map(item => (
-                <TabBar.Item
-                    key={item.key}
-                    icon={item.icon}
-                    title={item.title}
-                    badge={item.badge}
-                />
-            ))}
-        </TabBar>
+    // 不知道怎么更改选中颜色
+return (
+    <TabBar
+        onChange={value => onNavigate(value)}
+    >
+        {tabs.map(item => (
+            <TabBar.Item
+                key={item.key}
+                icon={item.icon}
+                title={item.title}
+                badge={item.badge}
+                style={{ color:'#57c3c2'}}
+            />
+        ))}
+    </TabBar>
 
-    )
+)
 }
 
 export default class Home extends React.Component {
@@ -86,10 +83,10 @@ export default class Home extends React.Component {
                 <div className={styles.body} style={{ marginTop: '100px' }}>
                     <Routes>
                         <Route path='*/home/tim' element={<Tim />}></Route>
-                        <Route path='*/home/todo' element={<Todo />}></Route>
-                        <Route path='*/home/message' element={<Message />}></Route>
-                        <Route path='*/home/me' element={<PersonalCenter />}></Route>
 
+                        <Route path='*/home/my' element={<My />}></Route>
+
+                        <Route path="*/home/msg" element={<Msg />}></Route>
                     </Routes>
                 </div>
                 <div className={styles.bottom}>
@@ -103,17 +100,5 @@ export default class Home extends React.Component {
 }
 
 function Tim() {
-    return <div style={{ paddingTop: '20px' }}>首页</div>
-}
-
-function Todo() {
-    return <div>我的待办</div>
-}
-
-function Message() {
-    return <div>我的消息</div>
-}
-
-function PersonalCenter() {
-    return <div>个人中心</div>
+    return <div style={{ paddingTop: '10px' }}>首页</div>
 }
