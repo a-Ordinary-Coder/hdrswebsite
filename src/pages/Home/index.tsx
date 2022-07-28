@@ -13,6 +13,7 @@ import {
     MessageFill,
 } from 'antd-mobile-icons'
 
+
 import styles from './demo02.less'
 import Msg from '../Msg'
 import My from '../My'
@@ -22,9 +23,6 @@ const Bottom: FC = () => {
     // const location = useLocation()
     // const { pathname } = location
 
-    // const setRouteActive = (value: string) => {
-    //     history.push(value)
-    // }
 
     const tabs = [
         {
@@ -51,22 +49,22 @@ const Bottom: FC = () => {
     }
 
     // 不知道怎么更改选中颜色
-return (
-    <TabBar
-        onChange={value => onNavigate(value)}
-    >
-        {tabs.map(item => (
-            <TabBar.Item
-                key={item.key}
-                icon={item.icon}
-                title={item.title}
-                badge={item.badge}
-                style={{ color:'#57c3c2'}}
-            />
-        ))}
-    </TabBar>
+    return (
+        <TabBar
+            onChange={value => onNavigate(value)}
+        >
+            {tabs.map(item => (
+                <TabBar.Item
+                    key={item.key}
+                    icon={item.icon}
+                    title={item.title}
+                    badge={item.badge}
+                    style={{ color: '#57c3c2' }}
+                />
+            ))}
+        </TabBar>
 
-)
+    )
 }
 
 export default class Home extends React.Component {
@@ -89,7 +87,7 @@ export default class Home extends React.Component {
                         <Route path="*/home/msg" element={<Msg />}></Route>
                     </Routes>
                 </div>
-                <div className={styles.bottom}>
+                <div className={styles.bottom} style={{position:'fixed',bottom:0,width:'100%',marginLeft:'-7px'}}>
                     <Bottom />
                 </div>
             </div>
@@ -100,5 +98,5 @@ export default class Home extends React.Component {
 }
 
 function Tim() {
-    return <div style={{ paddingTop: '10px' }}>首页</div>
+    return <div>首页</div>
 }
