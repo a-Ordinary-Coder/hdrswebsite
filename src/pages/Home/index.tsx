@@ -28,19 +28,21 @@ const Bottom: FC = () => {
         {
             key: '*/home/tim',
             title: '首页',
-            icon: <AppOutline />,
+            icon: (active: boolean) =>
+                active ? <AppOutline style={{ color:'#20894d'}}/> : <AppOutline />,
         },
         {
             key: '*/home/msg',
             title: '消息',
             icon: (active: boolean) =>
-                active ? <MessageFill /> : <MessageOutline />,
+                active ? <MessageFill style={{ color: '#20894d' }} /> : <MessageOutline />,
             badge: '99+',
         },
         {
             key: '*/home/my',
             title: '我的',
-            icon: <UserOutline />,
+            icon: (active: boolean) =>
+                active ? <UserOutline style={{ color: '#20894d' }} /> : <UserOutline />,
         },
     ]
 
@@ -59,7 +61,7 @@ const Bottom: FC = () => {
                     icon={item.icon}
                     title={item.title}
                     badge={item.badge}
-                    style={{ color: '#57c3c2' }}
+                    style={{ color: '#2b312c' }}
                 />
             ))}
         </TabBar>
@@ -87,7 +89,7 @@ export default class Home extends React.Component {
                         <Route path="*/home/msg" element={<Msg />}></Route>
                     </Routes>
                 </div>
-                <div className={styles.bottom} style={{position:'fixed',bottom:0,width:'100%',marginLeft:'-7px'}}>
+                <div className={styles.bottom} style={{position:'fixed',bottom:0,width:'100%',marginLeft:'-8px'}}>
                     <Bottom />
                 </div>
             </div>
